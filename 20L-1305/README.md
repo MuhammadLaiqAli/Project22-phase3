@@ -92,12 +92,13 @@ and shared freely with the world, as it holds no secrets!
     
 To automatically load the referenced secrets on startup, all you need to do is include the SecretHub CLI in your Django application launch script.
 
-            Before                                                    After
-          manage.py runserver                               secrethub run -- manage.py runserver
+               Before                                                    After
+            manage.py runserver                               secrethub run -- manage.py runserver
+          
+          
+     STEP 3
+     Control & monitor secret reads done by your Django app
 
-    STEP 3
-    Control & monitor secret reads done by your Django app
-    
 Every time your Django app starts, secret reads gets recorded on the audit log. Restrict access to only the secrets it needs and know that you can revoke 
 access with a single command.
                                                                                                                                                                                              
