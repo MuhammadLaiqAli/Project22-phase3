@@ -101,4 +101,25 @@ To automatically load the referenced secrets on startup, all you need to do is i
 
 Every time your Django app starts, secret reads gets recorded on the audit log. Restrict access to only the secrets it needs and know that you can revoke 
 access with a single command.
-                                                                                                                                                                                             
+                                                                                                                                            
+                                                                                                                                            
+                                                                     DOCUMENTATION OF DJANGO
+                                                                                                                                            
+        User manuals
+
+   
+ Django  has also a large set of document for their user which inintially starts from installation part and then go forward to all the functions and method like
+ database connectivity, sql injection, csrf tokens ,user authentication and many are explained by django in their documentation.
+    
+Django User Guide is a django>=1.6(version) app that shows configurable, self-contained HTML guides to users. Showing a guide to all of your users is as easy as
+creating a `Guide` object and linking them to your users. Use the convenient `{% user_guide %}` template tag where you want guides to appear and Django User Guide does the rest. 
+
+When a user visits a page containing the template tag, they are greeted with relevant guides. Django User Guide decides what guide(s) a user needs to see and displays them in a modal window with controls for cycling through those guides. Django User Guide tracks plenty of meta-data: creation times, guide importance, if the guide has been finished by specific users, finished times, etc.
+
+Django User Guide decides what guide(s) a user needs to see and displays them in a modal window with controls for cycling through those guides. Django User Guide tracks plenty of meta-data: creation times, guide importance, if the guide has been finished by specific users, finished times, etc.
+
+        Django Tutorial
+        
+ Django has also their tutorials that are not officially from django but these are third party tutorials like w3schools and many tech channels on youtube are 
+ covering the content of django which ultimately supports the community using django.
+ 
