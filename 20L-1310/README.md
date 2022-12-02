@@ -194,7 +194,7 @@ Sylius is constructed from fully decoupled and flexible e-commerce components fo
 It is your choice how to use Sylius, you can benefit from the components with any framework, integrate selected bundles into existing or new Symfony app or built your application on top of Sylius platform.
 
 ##Steps to use Sylius :
-1. Follow standards, base branch pull requests
-2. User Guide, Tutorials, blogs
-3. Customization guide
-4. Getting started
+Follow standards, base branch pull requests
+User Guide, Tutorials, blogs
+Customization guide
+Getting started
