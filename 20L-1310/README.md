@@ -234,4 +234,37 @@ In order to send emails you need to configure Mailer Service. Basically you need
 
 Create an account on a mailing service.
 In your .env file modify the MAILER_URL variable.
+```php
 MAILER_URL=gmail://username:password@local
+```
+
+## Installing assets
+In order to see a fully functional frontend you will need to install its assets.
+
+Sylius uses Webpack to build frontend assets using Yarn as a JavaScript package manager.
+
+Having Yarn installed, go to your project directory to install the dependencies:
+```php
+yarn install
+```
+
+Then build the frontend assets by running:
+```php
+yarn build
+```
+## Accessing the Shop
+We strongly recommend using the Symfony Local Web Server by running the symfony server:start command and then accessing http://127.0.0.1:8000 in your web browser to see the shop.
+
+You can log to the administrator panel located at /admin with the credentials you have provided during the installation process.
+
+## How to start developing? - Project Structure
+After you have successfully gone through the installation process of Sylius-Standard you are probably going to start developing within the framework of Sylius.
+
+In the root directory of your project you will find these important subdirectories:
+```php
+config/ - here you will be adding the yaml configuration files including routing, security, state machines configurations etc.
+var/log/ - these are the logs of your application
+var/cache/ - this is the cache of you project
+src/ - this is where you will be adding all you custom logic in the App
+public/ - there you will be placing assets of your project
+```
