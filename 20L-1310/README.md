@@ -1,4 +1,4 @@
-# SYLIUS E-COMMERECCE SOLUTION
+# SYLIUS E-COMMERECE SOLUTION
 # Architecture Overview
 Sylius is built from components and Symfony bundles(PHP web application framework that is free and open-source, as well as a collection of reusable PHP component libraries so its time saving and completely compliant with business rules, is organized, manageable, and upgradeable,), which are integration layers with the framework. The name standards and data persistence methods are the same for all bundles. Sylius manages all entities by default using the Doctrine ORM.In PHP 5.2. 3+, Doctrine is an object relational mapper (ORM -In computer science, object-relational mapping is a programming method for transforming data across type systems using object-oriented programming languages.)
 that is built on top of a potent database abstraction layer (DBAL). One of its standout features is the ability to create database queries using the Doctrine Query
