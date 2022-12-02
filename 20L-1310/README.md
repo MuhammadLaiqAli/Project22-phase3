@@ -206,3 +206,32 @@ It is your choice how to use Sylius, you can benefit from the components with an
 2. User Guide, Tutorials, blogs
 3. Customization guide
 4. Getting started
+
+To begin creating your new project, run this command:
+ ```php
+composer create-project sylius/sylius-standard acme
+ ```
+ 
+ This will create a new Symfony project in the acme directory. Next, move to the project directory:
+ 
+ ```php
+cd acme
+ ```
+Sylius uses environment variables to configure the connection with database and mailer services. You can look up the default values in .env file and customise them by creating .env.local with variables you want to override. For example, if you want to change your database name from the default sylius_%kernel.environment% to my_custom_sylius_database, the contents of that new file should look like the following snippet:
+
+ ```php
+DATABASE_URL=mysql://username:password@host/my_custom_sylius_database
+ ```
+ 
+ After everything is in place, run the following command to install Sylius:
+ 
+ ```php
+php bin/console sylius:install
+ ```
+ 
+## Configuring Mailer
+In order to send emails you need to configure Mailer Service. Basically you need to:
+
+Create an account on a mailing service.
+In your .env file modify the MAILER_URL variable.
+MAILER_URL=gmail://username:password@local
