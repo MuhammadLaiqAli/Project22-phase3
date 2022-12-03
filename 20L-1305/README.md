@@ -1,5 +1,5 @@
-                                                                SECURITY IN DJANGO
-    Cross site scripting (XSS) protection
+                                                               #SECURITY IN DJANGO
+ #Cross site scripting (XSS) protection
     
 XSS attacks allow a user to inject client side scripts into the browsers of other users. This is usually achieved by storing the malicious scripts in the database 
 where 
@@ -18,7 +18,7 @@ characters and words which require escaping.You should also be very careful when
 
 
 
-    Cross site request forgery (CSRF) protection
+#Cross site request forgery (CSRF) protection
     
 CSRF attacks allow a malicious user to execute actions using the credentials of another user without that user’s knowledge or consent.
 Django has built-in protection against most types of CSRF attacks, providing you have enabled and used it where appropriate. However, as with any mitigation technique,
@@ -32,7 +32,7 @@ HTTPS where it is available by forwarding insecure connection requests and using
 Be very careful with marking views with the csrf_exempt decorator unless it is absolutely necessary.
 
 
-    SQL injection protection
+#SQL injection protection
     
 SQL injection is a type of attack where a malicious user is able to execute arbitrary SQL code on a database. This can result in records being deleted or data leakage.
 
@@ -43,7 +43,7 @@ user
 can control. In addition, you should exercise caution when using extra() and RawSQL.
 
 
-    User-uploaded content
+#User-uploaded content
     
 If your site accepts file uploads, it is strongly advised that you limit these uploads in your web server configuration to a reasonable size in order to prevent denial 
 of service (DOS) attacks. 
@@ -62,7 +62,7 @@ same-origin policy protections such as cross site scripting. For example, if you
 setting) from something like usercontent-example.com. It’s not sufficient to serve content from a subdomain like usercontent.example.com.
 Beyond this, applications may choose to define a list of allowable file extensions for user uploaded files and configure the web server to only serve such files.
 
-    Clickjacking protection
+#Clickjacking protection
     
 Clickjacking is a type of attack where a malicious site wraps another site in a frame. 
 This attack can result in an unsuspecting user being tricked into performing unintended actions on the target site.Django contains clickjacking protection in
@@ -70,11 +70,12 @@ the form of the X-Frame-Options middleware which in a supporting browser can pre
 protection on a per view basis or to configure the exact header value sent.The middleware is strongly recommended for any site that does not need to have its 
 pages wrapped in a frame by third party sites, or only needs to allow that for a small section of the site.
                   
-                                                      SECRETS MANAGEMENT IN DJANGO
+                                                     # SECRETS MANAGEMENT IN DJANGO
                                                       
-    STEP 1
-    Replace plaintext secrets with references
-    
+  #1.STEP 1
+  
+##Replace plaintext secrets with references    
+
 Collect all secrets from your settings.py, orchestrator manifests, .env file, or any other config file, and use the SecretHub CLI to encrypt and centrally store them.
 In your Python code there’s no need to import a library or SDK of some sort. You can just read secrets from environment variables.
 
@@ -106,17 +107,17 @@ To automatically load the referenced secrets on startup, all you need to do is i
             manage.py runserver                               secrethub run -- manage.py runserver
           
           
-     STEP 3
-     Control & monitor secret reads done by your Django app
+#STEP 3
+##Control & monitor secret reads done by your Django app
 
 Every time your Django app starts, secret reads gets recorded on the audit log. Restrict access to only the secrets it needs and know that you can revoke 
 access with a single command.
                                                                                                                                             
                                                                                                                                             
-                                                DOCUMENTATION OF DJANGO
+                                                #DOCUMENTATION OF DJANGO
                                                                                                                                             
        
-       User manuals
+##User manuals
 
    
  Django  has also a large set of document for their user which inintially starts from installation part and then go forward to all the functions and method like
@@ -133,7 +134,7 @@ been finished by specific users, finished times, etc.
 Django User Guide decides what guide(s) a user needs to see and displays them in a modal window with controls for cycling through those guides. Django User Guide 
 tracks plenty of meta-data: creation times, guide importance, if the guide has been finished by specific users, finished times, etc.
 
-        Django Tutorial
+##Django Tutorial
         
  Django has also their tutorials that are not officially from django but these are third party tutorials like w3schools and many tech channels on youtube are 
  covering the content of django which ultimately supports the community using django.
@@ -144,12 +145,12 @@ with all the dependencies that are required to run the set up and guidance in al
 
 Following is the sample of installation process of Django:
   
-      Install Python
+## Install Python
 
 Django is a Python web framework. See What Python version can I use with Django? for details.
 Get the latest version of Python at https://www.python.org/downloads/ or with your operating system’s package manager.
 
-      Install Apache and mod_wsgi
+##Install Apache and mod_wsgi
 
 If you just want to experiment with Django, skip ahead to the next section; Django includes a lightweight web server you can use for testing, so you won’t need to set 
 up Apache until you’re ready to deploy Django in production.
@@ -168,7 +169,7 @@ If you can’t use mod_wsgi for some reason, fear not: Django supports many othe
 follows the WSGI spec (PEP 3333), which allows it to run on a variety of server platforms.      
 
 
-      Get your database running
+##Get your database running
       
 If you plan to use Django’s database API functionality, you’ll need to make sure a database server is running. Django supports many different database servers and is 
 officially supported with PostgreSQL, MariaDB, MySQL, Oracle and SQLite.
@@ -195,7 +196,7 @@ file, see DATABASES for details.
 
 If you’re using Django’s testing framework to test database queries, Django will need permission to create a test database.
 
-      Install the Django code
+##Install the Django code
 
 Installation instructions are slightly different depending on whether you’re installing a distribution-specific package, downloading the latest official release, or 
 fetching the latest development version.
@@ -214,7 +215,7 @@ After you’ve created and activated a virtual environment, enter the command:
 
 $ python -m pip install Django
 
-                                                        Django-extensions documentation!
+                                                        #Django-extensions documentation!
 
 Django Extensions is a collection of custom extensions for the Django Framework.
 These include management commands, additional database fields, admin extensions and much more.
