@@ -1,5 +1,5 @@
-                                                               #SECURITY IN DJANGO
- #Cross site scripting (XSS) protection
+                                                               # SECURITY IN DJANGO
+ # Cross site scripting (XSS) protection
     
 XSS attacks allow a user to inject client side scripts into the browsers of other users. This is usually achieved by storing the malicious scripts in the database 
 where 
