@@ -1,5 +1,5 @@
-                                                               #  SECURITY IN DJANGO
- # Cross site scripting (XSS) protection
+# SECURITY IN DJANGO
+# Cross site scripting (XSS) protection
     
 XSS attacks allow a user to inject client side scripts into the browsers of other users. This is usually achieved by storing the malicious scripts in the database 
 where 
@@ -70,7 +70,7 @@ the form of the X-Frame-Options middleware which in a supporting browser can pre
 protection on a per view basis or to configure the exact header value sent.The middleware is strongly recommended for any site that does not need to have its 
 pages wrapped in a frame by third party sites, or only needs to allow that for a small section of the site.
                   
-                                                     # SECRETS MANAGEMENT IN DJANGO
+# SECRETS MANAGEMENT IN DJANGO
                                                       
   # 1.STEP 1
   
@@ -114,7 +114,7 @@ Every time your Django app starts, secret reads gets recorded on the audit log. 
 access with a single command.
                                                                                                                                             
                                                                                                                                             
-                                                # DOCUMENTATION OF DJANGO
+# DOCUMENTATION OF DJANGO
                                                                                                                                             
        
 ## User manuals
@@ -215,7 +215,7 @@ After you’ve created and activated a virtual environment, enter the command:
 
 $ python -m pip install Django
 
-                                                        #Django-extensions documentation!
+# Django-extensions documentation!
 
 Django Extensions is a collection of custom extensions for the Django Framework.
 These include management commands, additional database fields, admin extensions and much more.
