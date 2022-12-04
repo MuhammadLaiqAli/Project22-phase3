@@ -234,3 +234,84 @@ For more detailed instructions check out our Installation instructions. Enjoy.
 
 This might mean the django-extensions may work with older or unsupported versions but it is not guarantee and most likely will not fix bugs related to 
 incompatibilities with older versions.
+
+# Performance and optimization
+
+## Introduction
+Generally one’s first concern is to write code that works, whose logic functions as required to produce the expected output. Sometimes, however, this will not be enough to make the code work as efficiently as one would like.
+
+In this case, what’s needed is something - and in practice, often a collection of things - to improve the code’s performance without, or only minimally, affecting its behavior.
+
+## General approaches
+
+## What are you optimizing for?
+It’s important to have a clear idea what you mean by ‘performance’. There is not just one metric of it.
+
+Improved speed might be the most obvious aim for a program, but sometimes other performance improvements might be sought, such as lower memory consumption or fewer demands on the database or network.
+
+Improvements in one area will often bring about improved performance in another, but not always; sometimes one can even be at the expense of another. For example, an improvement in a program’s speed might cause it to use more memory. Even worse, it can be self-defeating - if the speed improvement is so memory-hungry that the system starts to run out of memory, you’ll have done more harm than good.
+
+There are other trade-offs to bear in mind. Your own time is a valuable resource, more precious than CPU time. Some improvements might be too difficult to be worth implementing, or might affect the portability or maintainability of the code. Not all performance improvements are worth the effort.
+
+So, you need to know what performance improvements you are aiming for, and you also need to know that you have a good reason for aiming in that direction - and for that you need:
+
+## Performance benchmarking
+It’s no good just guessing or assuming where the inefficiencies lie in your code.
+
+## Caching
+Often it is expensive (that is, resource-hungry and slow) to compute a value, so there can be huge benefit in saving the value to a quickly accessible cache, ready for the next time it’s required.
+
+It’s a sufficiently significant and powerful technique that Django includes a comprehensive caching framework, as well as other smaller pieces of caching functionality.
+
+## The caching framework
+Django’s caching framework offers very significant opportunities for performance gains, by saving dynamic content so that it doesn’t need to be calculated for each request.
+
+For convenience, Django offers different levels of cache granularity: you can cache the output of specific views, or only the pieces that are difficult to produce, or even an entire site.
+
+Implementing caching should not be regarded as an alternative to improving code that’s performing poorly because it has been written badly. It’s one of the final steps toward producing well-performing code, not a shortcut.
+
+## cached_property
+It’s common to have to call a class instance’s method more than once. If that function is expensive, then doing so can be wasteful.
+
+Using the cached_property decorator saves the value returned by a property; the next time the function is called on that instance, it will return the saved value rather than re-computing it. Note that this only works on methods that take self as their only argument and that it changes the method to a property.
+
+Certain Django components also have their own caching functionality; these are discussed below in the sections related to those components.
+
+## Understanding laziness
+Laziness is a strategy complementary to caching. Caching avoids recomputation by saving results; laziness delays computation until it’s actually required.
+
+Laziness allows us to refer to things before they are instantiated, or even before it’s possible to instantiate them. This has numerous uses.
+
+For example, lazy translation can be used before the target language is even known, because it doesn’t take place until the translated string is actually required, such as in a rendered template.
+
+Laziness is also a way to save effort by trying to avoid work in the first place. That is, one aspect of laziness is not doing anything until it has to be done, because it may not turn out to be necessary after all. Laziness can therefore have performance implications, and the more expensive the work concerned, the more there is to gain through laziness.
+
+Python provides a number of tools for lazy evaluation, particularly through the generator and generator expression constructs. It’s worth reading up on laziness in Python to discover opportunities for making use of lazy patterns in your code.
+
+## Laziness in Django
+Django is itself quite lazy. A good example of this can be found in the evaluation of QuerySets. QuerySets are lazy. Thus a QuerySet can be created, passed around and combined with other QuerySets, without actually incurring any trips to the database to fetch the items it describes. What gets passed around is the QuerySet object, not the collection of items that - eventually - will be required from the database.
+
+On the other hand, certain operations will force the evaluation of a QuerySet. Avoiding the premature evaluation of a QuerySet can save making an expensive and unnecessary trip to the database.
+
+Django also offers a keep_lazy() decorator. This allows a function that has been called with a lazy argument to behave lazily itself, only being evaluated when it needs to be. Thus the lazy argument - which could be an expensive one - will not be called upon for evaluation until it’s strictly required.
+
+## Database optimization
+Django’s database layer provides various ways to help developers get the best performance from their databases. The database optimization documentation gathers together links to the relevant documentation and adds various tips that outline the steps to take when attempting to optimize your database usage.
+
+## HTTP performance
+Middleware¶
+Django comes with a few helpful pieces of middleware that can help optimize your site’s performance. They include:
+
+## ConditionalGetMiddleware
+Adds support for modern browsers to conditionally GET responses based on the ETag and Last-Modified headers. It also calculates and sets an ETag if needed.
+
+## GZipMiddleware
+Compresses responses for all modern browsers, saving bandwidth and transfer time. Note that GZipMiddleware is currently considered a security risk, and is vulnerable to attacks that nullify the protection provided by TLS/SSL. See the warning in GZipMiddleware for more information.
+
+## Static files
+Static files, which by definition are not dynamic, make an excellent target for optimization gains.
+
+## ManifestStaticFilesStorage
+By taking advantage of web browsers’ caching abilities, you can eliminate network hits entirely for a given file after the initial download.
+
+ManifestStaticFilesStorage appends a content-dependent tag to the filenames of static files to make it safe for browsers to cache them long-term without missing future changes - when a file changes, so will the tag, so browsers will reload the asset automatically.
